@@ -1,0 +1,16 @@
+{
+  "name": "bizpay",
+  "version": "0.1.0",
+  "description": "Open-source business management and digital payment platform",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "business",
+    "payments",
+    "digital-payments",
+    "web3"
+  ],
+  "license": "MIT"
+}
