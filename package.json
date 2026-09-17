@@ -2,9 +2,9 @@
   "name": "bizpay",
   "version": "0.1.0",
   "description": "Open-source business management and digital payment platform",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/app.js"
   },
   "keywords": [
     "business",
