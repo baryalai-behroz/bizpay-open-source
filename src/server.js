@@ -1,34 +1,24 @@
 const http = require("http");
-
-const app = {
-  name: "BizPay",
-  version: "0.1.0",
-  status: "running"
-};
+const config = require("./config");
+const { getStatus } = require("./routes/status");
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, {
     "Content-Type": "application/json"
   });
 
-  if (req.url === "/api") {
-    res.end(
-      JSON.stringify({
-        name: app.name,
-        version: app.version,
-        status: app.status,
-        message: "Welcome to BizPay API"
-      })
-    );
+  if (req.url === "/api/status") {
+    res.end(JSON.stringify(getStatus()));
     return;
   }
 
-  if (req.url === "/api/status") {
+  if (req.url === "/api") {
     res.end(
       JSON.stringify({
-        name: app.name,
-        version: app.version,
-        status: app.status
+        name: config.name,
+        version: config.version,
+        status: "running",
+        message: "Welcome to BizPay API"
       })
     );
     return;
@@ -36,14 +26,12 @@ const server = http.createServer((req, res) => {
 
   res.end(
     JSON.stringify({
-      name: app.name,
-      status: app.status
+      name: config.name,
+      status: "running"
     })
   );
 });
 
-const PORT = 3000;
-
-server.listen(PORT, () => {
-  console.log(`BizPay server is running on port ${PORT}`);
+server.listen(config.port, () => {
+  console.log(`${config.name} server is running on port ${config.port}`);
 });
