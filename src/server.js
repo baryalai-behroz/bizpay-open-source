@@ -1,15 +1,34 @@
 const http = require("http");
 
+const app = {
+  name: "BizPay",
+  version: "0.1.0",
+  status: "running"
+};
+
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "application/json" });
+  res.writeHead(200, {
+    "Content-Type": "application/json"
+  });
 
   if (req.url === "/api") {
     res.end(
       JSON.stringify({
-        name: "BizPay",
-        version: "0.1.0",
-        status: "running",
+        name: app.name,
+        version: app.version,
+        status: app.status,
         message: "Welcome to BizPay API"
+      })
+    );
+    return;
+  }
+
+  if (req.url === "/api/status") {
+    res.end(
+      JSON.stringify({
+        name: app.name,
+        version: app.version,
+        status: app.status
       })
     );
     return;
@@ -17,8 +36,8 @@ const server = http.createServer((req, res) => {
 
   res.end(
     JSON.stringify({
-      name: "BizPay",
-      status: "running"
+      name: app.name,
+      status: app.status
     })
   );
 });
